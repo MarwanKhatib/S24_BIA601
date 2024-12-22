@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VRP Genetic Algorithm</title>
+</head>
+<body>
+    <h1>Vehicle Routing Problem</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="vehicle_capacities">Vehicle Capacities (comma-separated):</label><br>
+        <input type="text" name="vehicle_capacities" id="vehicle_capacities" placeholder="e.g., 3,3,3"><br><br>
+        <label for="location_points">Location Points (e.g., (x1,y1),(x2,y2),...):</label><br>
+        <input type="text" name="location_points" id="location_points" placeholder="e.g., (2,3),(5,6),(8,9)"><br><br>
+        <button type="submit">Run Algorithm</button>
+    </form>
+
+    {% if route_image %}
+        <h2>Optimal Route</h2>
+        <img src="data:image/png;base64,{{ route_image }}" alt="Optimal Route">
+        <h3>Route:</h3>
+        <p>{{ best_route }}</p>
+    {% endif %}
+</body>
+</html>
